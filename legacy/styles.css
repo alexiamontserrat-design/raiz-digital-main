@@ -1,0 +1,267 @@
+/*---------- INICIO DE SESION -------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: rgb(245, 230, 230);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.top-bar {
+    width: 100%;
+    background: linear-gradient(to right, #816023, #ca8537ef);
+    padding: 12px 30px;
+    display: flex;
+    color: white;
+    font-size: 20px;
+    border-radius: 30px;
+    margin-top: 30px;
+    max-width: 1800px;
+}
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 80px;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 720px;
+    margin-top: 100px;
+    text-align: center;
+    margin-top: 200px;
+}
+h2 {
+    color: #000000;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+.input-group {
+    
+    text-align: left;
+}
+.input-group label {
+    color: #000000;
+    
+}
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #8b8b8b;
+    border-radius: 15px;
+    font-size: 16px;
+}
+button {
+    width: 30%;
+    padding: 15px;
+    background: rgb(204, 146, 38);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    
+}
+.footer-text {
+    margin-top: 25px;
+    color: #6b7280;
+    font-size: 15px;
+}
+.footer-text a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/*---------- PANER ENFERMERO-------------*/
+
+h1 {
+    color: #dbdad8d7;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 60px;
+    margin-top: 20px;
+}
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 80px;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 720px;
+    margin-top: 100px;
+    text-align: center;
+    margin-top: 20px;
+}
+.card input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+
+/*---------- PANEL ENFERMERO-------------*/
+.cardtwo th, 
+.cardtwo td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid #794515;
+}
+.cardtwo th {
+    background: #a56d2e; /* mejor contraste */
+    color: white;
+    font-weight: 600;
+}
+.cardtwo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+    padding: 40px 80px;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    max-width: 720px;
+    margin: 20px auto;
+    text-align: center;
+}
+h3 {
+    color: #dbdad8d7;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 60px;
+    margin-top: 20px;
+}
+.back-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #b67e15;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+:root {
+    --fondo: #f5f3ef;
+    --card: #eae7e2;
+    --linea: #c9c4bd;
+    --texto: #3a3a3a;
+    --dorado: #c89b5e;
+    --dorado-hover: #b88a4d;
+}
+
+body {
+    background: var(--fondo);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+/* CONTENEDOR */
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+/* LISTA */
+.lista-productos {
+    width: 65%;
+    background: var(--card);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+/* BUSCADOR */
+.buscador input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid var(--linea);
+    margin-bottom: 15px;
+}
+
+/* PRODUCTO */
+.producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--linea);
+}
+
+.producto:hover {
+    background: rgba(0,0,0,0.03);
+}
+
+.producto-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.producto img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.producto-nombre {
+    font-size: 14px;
+}
+
+/* ELIMINAR */
+.eliminar {
+    font-size: 18px;
+    color: #777;
+    text-decoration: none;
+}
+
+.eliminar:hover {
+    color: red;
+}
+
+/* PANEL DERECHO */
+.panel {
+    width: 35%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* BOTONES */
+.btn-panel {
+    background: var(--dorado);
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+.btn-panel:hover {
+    background: var(--dorado-hover);
+}
+
+/* FORM */
+.formulario {
+    width: 40%;
+    margin: 50px auto;
+    background: var(--card);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}

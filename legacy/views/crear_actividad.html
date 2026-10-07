@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crear Actividad</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial;
+        background-color: #e9e9e9;
+      }
+
+      /* HEADER */
+      .header {
+        background: linear-gradient(to right, #5a4a2f, #c89b4f);
+        color: white;
+        padding: 15px 25px;
+        font-size: 14px;
+      }
+
+      /* CONTENEDOR */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+
+      /* CARD */
+      .card {
+        background-color: #cfc5b8;
+        padding: 30px;
+        border-radius: 20px;
+        width: 400px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* INPUTS */
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #aaa;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      /* BOTÓN */
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #5a4a2f;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #c89b4f;
+      }
+
+      /* REGRESAR */
+      .regresar {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .regresar:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">☰ RAÍZ DIGITAL > CREAR ACTIVIDAD</div>
+
+    <?php include("contexto_usuario.php"); ?>
+
+    <div class="container">
+      <div class="card">
+        <h2>Crear Actividad</h2>
+
+        <form action="../crear_actividad.php" method="POST">
+          <input type="text" name="titulo" placeholder="Título" required />
+
+          <textarea name="descripcion" placeholder="Descripción"></textarea>
+
+          <input type="date" name="fecha" required />
+
+          <input type="time" name="hora" required />
+
+          <button type="submit">Guardar Actividad</button>
+        </form>
+
+        <a href="gestion_view_enfermero.php" class="regresar"> ⬅ Regresar </a>
+      </div>
+    </div>
+  </body>
+</html>

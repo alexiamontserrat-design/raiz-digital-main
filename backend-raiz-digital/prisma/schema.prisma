@@ -1,0 +1,114 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  email     String   @unique
+  password  String
+  rol       String   @default("ENFERMERO") // ENFERMERO, FAMILIAR, RESIDENTE, ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  residentesComoFamiliar Resident[]  @relation("FamiliarResidentes")
+  residentesComoResidente Resident[] @relation("ResidenteUsuario")
+  vitalSigns              VitalSign[]
+}
+
+model Resident {
+  id              Int       @id @default(autoincrement())
+  nombre          String
+  apellido        String
+  fechaNacimiento String
+  habitacion      String
+  estado          String    @default("Estable")
+  familiarId      Int?
+  usuarioId       Int?
+
+  familiar User? @relation("FamiliarResidentes", fields: [familiarId], references: [id])
+  usuario  User? @relation("ResidenteUsuario", fields: [usuarioId], references: [id])
+
+  vitalSigns VitalSign[]
+  products   Product[]
+  recipes    Recipe[]
+  alerts     Alert[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VitalSign {
+  id                 Int      @id @default(autoincrement())
+  residentId         Int
+  resident           Resident @relation(fields: [residentId], references: [id], onDelete: Cascade)
+  fecha              DateTime @default(now())
+  presionArterial    String
+  frecuenciaCardiaca Int
+  temperatura        Float
+  saturacionOxigeno  Int
+  notas              String?
+  registradoPorId    Int?
+  registradoPor      User?    @relation(fields: [registradoPorId], references: [id])
+}
+
+model Product {
+  id              Int      @id @default(autoincrement())
+  residentId      Int
+  resident        Resident @relation(fields: [residentId], references: [id], onDelete: Cascade)
+  nombre          String
+  categoria       String
+  cantidad        Int      @default(0)
+  stockMinimo     Int      @default(5)
+  unidadMedida    String   @default("unidades")
+  fechaVencimiento String?
+
+  alerts Alert[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Recipe {
+  id          Int          @id @default(autoincrement())
+  residentId  Int
+  resident    Resident     @relation(fields: [residentId], references: [id], onDelete: Cascade)
+  diagnostico String
+  medico      String
+  fecha       DateTime     @default(now())
+  estado      String       @default("ACTIVA") // ACTIVA, FINALIZADA, CANCELADA
+
+  detalles RecipeDetail[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RecipeDetail {
+  id           Int    @id @default(autoincrement())
+  recipeId     Int
+  recipe       Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  medicamento  String
+  dosis        String
+  frecuencia   String
+  duracion     String
+}
+
+model Alert {
+  id               Int      @id @default(autoincrement())
+  residentId       Int
+  resident         Resident @relation(fields: [residentId], references: [id], onDelete: Cascade)
+  productId        Int?
+  product          Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  tipo             String   @default("REABASTECIMIENTO")
+  mensaje          String
+  atendida         Boolean  @default(false)
+  enteradoFamiliar Boolean  @default(false)
+  fecha            DateTime @default(now())
+}

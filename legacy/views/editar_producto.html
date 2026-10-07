@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Editar Producto</title>
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: #e9e9e9;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.card {
+    background: #cfc5b8;
+    padding: 30px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.2);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #5a4a2f;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<?php include("contexto_usuario.php"); ?>
+
+<div class="container">
+<div class="card">
+
+<h2>✏️ Editar Producto</h2>
+
+<form action="/raiz-digital/actualizar_producto.php" method="POST" enctype="multipart/form-data">
+
+<input type="hidden" name="id" value="<?php echo $p['id_producto']; ?>">
+
+<input type="text" name="nombre" value="<?php echo $p['nombre']; ?>" required>
+
+<input type="text" name="especificaciones" value="<?php echo $p['especificaciones']; ?>">
+
+<div style="display:flex; gap:10px;">
+    <input type="number" name="cantidad" value="<?php echo $p['cantidad']; ?>">
+
+    <select name="tipo">
+        <option <?php if($p['tipo']=="piezas") echo "selected"; ?>>piezas</option>
+        <option <?php if($p['tipo']=="cajas") echo "selected"; ?>>cajas</option>
+        <option <?php if($p['tipo']=="botellas") echo "selected"; ?>>botellas</option>
+    </select>
+</div>
+
+<input type="file" name="imagen">
+
+<button>Guardar Cambios</button>
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>

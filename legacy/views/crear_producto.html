@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nuevo Producto</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial;
+        background-color: #e9e9e9;
+      }
+
+      /* HEADER */
+      .header {
+        background: linear-gradient(to right, #5a4a2f, #c89b4f);
+        color: white;
+        padding: 15px 25px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* CONTENEDOR */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85vh;
+      }
+
+      /* CARD */
+      .card {
+        background-color: #cfc5b8;
+        padding: 30px;
+        border-radius: 20px;
+        width: 400px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* TITULO */
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* INPUTS */
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 15px;
+      }
+
+      /* BOTON */
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 12px;
+        background-color: #5a4a2f;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #c89b4f;
+      }
+
+      /* VOLVER */
+      .back {
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <div>☰ RAÍZ DIGITAL > INVENTARIO</div>
+      <a href="/raiz-digital/inventario_enfermero.php" style="color: white"
+        >CASA</a
+      >
+    </div>
+
+    <div class="container">
+      <?php include("contexto_usuario.php"); ?>
+
+      <div class="card">
+        <h2>📦 Nuevo Producto</h2>
+
+        <form
+          action="/raiz-digital/crear_producto.php"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <!-- NOMBRE -->
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre del producto"
+            required
+          />
+
+          <!-- ESPECIFICACIONES -->
+          <input
+            type="text"
+            name="especificaciones"
+            placeholder="Ej: 500mg / Talla M / Adulto"
+          />
+
+       <!-- CANTIDAD + UNIDAD BASE -->
+            <div style="display: flex; gap: 10px">
+
+            <input
+                type="number"
+                name="cantidad"
+                placeholder="Cantidad disponible"
+                required
+                min="1"
+            />
+
+            <select name="tipo" required>
+                <option value="">Unidad</option>
+                <option value="tableta">Tableta</option>
+                <option value="capsula">Cápsula</option>
+                <option value="ml">Mililitros (mL)</option>
+                <option value="gota">Gotas</option>
+                <option value="inyeccion">Inyección</option>
+                <option value="sobre">Sobre</option>
+                <option value="ampolleta">Ampolleta</option>
+                <option value="unidad">Unidad</option>
+            </select>
+
+            </div>
+
+          <!-- IMAGEN -->
+          <input type="file" name="imagen" />
+
+          <button type="submit">Guardar Producto</button>
+        </form>
+        <div class="back">
+          <a href="/raiz-digital/inventario_enfermero.php">⬅ Regresar</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
